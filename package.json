@@ -1,0 +1,25 @@
+{
+  "name": "moyu-egret-tools",
+  "version": "1.0.0",
+  "description": "egret engine tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wheandis/moyu-egret-tools.git"
+  },
+  "keywords": [
+    "egret"
+  ],
+  "author": "wheandis@163.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wheandis/moyu-egret-tools/issues"
+  },
+  "homepage": "https://github.com/Wheandis/moyu-egret-tools#readme",
+  "dependencies": {
+    "moyu-tinypng": "^1.1.0"
+  }
+}
