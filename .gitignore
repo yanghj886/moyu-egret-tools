@@ -59,6 +59,7 @@ typings/
 .env
 
 project
+dest
 
 .DS_Store
 

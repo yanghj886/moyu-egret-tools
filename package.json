@@ -1,10 +1,11 @@
 {
   "name": "moyu-egret-tools",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "egret engine tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,15 @@
   },
   "homepage": "https://github.com/Wheandis/moyu-egret-tools#readme",
   "dependencies": {
-    "moyu-tinypng": "^1.1.0"
+    "gulp": "^3.9.1",
+    "gulp-static-hash": "^0.1.4",
+    "gulp-tinypng-compress": "^1.2.1",
+    "gulp-util": "^3.0.8",
+    "minimist": "^1.2.0",
+    "run-gulp-task": "^0.2.0",
+    "run-sequence": "^2.2.0"
+  },
+  "bin": {
+    "moyu-egret-tools": "./index.js"
   }
 }
