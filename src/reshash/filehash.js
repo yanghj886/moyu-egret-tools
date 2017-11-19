@@ -3,31 +3,29 @@ const fs = require('fs')
 const path = require('path')
 
 
-const getDirTree = (dir) => {
+const fileHash = (dir) => {
     let file
     try {
         file = fs.readdirSync(dir)
     } catch (e) { }
-    let arr = {}
+    let map = {}
     file.forEach(filename => {
         if (filename.indexOf('.') == 0) {
             return
         }
-        const filepath = path.join(dir, filename)
+        const filepath = path.resolve(dir, filename)
         const stat = fs.statSync(filepath)
         if (stat.isFile()) {
-            arr.push({
-                name: `${dir}/${filename}`,
-                hash: getFileHash(filepath)
-            })
+            map[filepath] = getHash(filepath)
+
         } else if (stat.isDirectory()) {
-            arr = [...arr, ...getDirTree(path.join(dir, filename))]
+            map = { ...map, ...fileHash(path.resolve(dir, filename)) }
         }
     })
-    return arr
+    return map
 }
 
-const getFileHash = (path) => {
+const getHash = (path) => {
     let file
     try {
         file = fs.readFileSync(path)
@@ -37,4 +35,4 @@ const getFileHash = (path) => {
     return crypto.createHash('md5').update(file).digest('hex')
 }
 
-module.exports = getDirTree
+module.exports = fileHash

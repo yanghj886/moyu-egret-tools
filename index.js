@@ -1,4 +1,8 @@
-const tinypng = require('moyu-tinypng')
-// console.log(tinypng())
-tinypng('cVHOq_QpAhmBM-BCu6gFmeE8CBuowzX7','./','../dest')
-// console.log('haha')
+const tinypng = require('./src/tinypng')
+const resHash = require('./src/reshash')
+
+module.exports = async(src, dest, tinypngkey) => {
+    if(tinypngkey){
+        // await tinypng(tinypngkey,)
+    }
+}
