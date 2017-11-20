@@ -5,7 +5,7 @@
 2. 文件md5
 3. ...
 
-##用法
+## 用法
 在`egret publish`之后，再利用`moyu-egret-tools`对发布的版本进行优化处理
 ```
 npm install -g moyu-egret-tools
