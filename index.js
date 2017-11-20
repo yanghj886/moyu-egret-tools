@@ -11,9 +11,6 @@ commander
     .option('-s, --src [value]', 'source path')
     .option('-d, --dest [value]', 'dist path')
     .option('-k, --key [value]', 'tinypng key')
-
-commander.command('')
-
 commander.parse(process.argv)
 
 
@@ -23,4 +20,21 @@ if (!src || !dest || !key) {
     console.log('-d, --dest: %s', 'dist path')
     console.log('-k, --key: %s', 'tinypng key')
     console.log('--help: %s', 'help')
+} else {
+    gutil.log('Starting', gutil.colors.magenta('copy...'))
+    tasks.copy(src, dest, function () {
+        gutil.log('Starting', gutil.colors.magenta('tinypng...'))
+        tasks.tinypng(key, src, dest, function () {
+            gutil.log('Starting', gutil.colors.magenta('reshash...'))
+            tasks.reshash(dest, function () {
+                gutil.log('Starting', gutil.colors.magenta('version...'))
+                tasks.version(dest, function () {
+                    gutil.log(gutil.colors.green('Done'))
+                })
+            })
+        })
+    })
 }
+
+
+

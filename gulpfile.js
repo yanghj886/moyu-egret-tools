@@ -17,6 +17,14 @@ gulp.task('tinypng', function () {
     return tasks.tinypng(k, s, d)
 })
 
+gulp.task('version', function () {
+    return tasks.version(d)
+})
+
+gulp.task('exmlversion', function () {
+    return tasks.exmlversion(d)
+})
+
 gulp.task('copy', function () {
     gutil.log('src path', gutil.colors.magenta(s))
     gutil.log('dest path', gutil.colors.magenta(d))
@@ -27,7 +35,7 @@ gulp.task('copy', function () {
 
 
 gulp.task('deploy', function (callback) {
-    runSequence('copy', 'tinypng', 'reshash', callback)
+    runSequence('copy', 'tinypng', 'reshash', 'version', callback)
 })
 
 gulp.task('default', ['deploy'], function () {
