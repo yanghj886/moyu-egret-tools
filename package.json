@@ -1,6 +1,6 @@
 {
   "name": "moyu-egret-tools",
-  "version": "1.1.1",
+  "version": "1.1.5",
   "description": "egret engine tools",
   "main": "index.js",
   "scripts": {

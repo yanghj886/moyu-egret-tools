@@ -5,8 +5,10 @@ const path = require('path')
 const tinypng = require('gulp-tinypng-compress')
 const replace = require('gulp-replace')
 
+
 module.exports = {
-    reshash: function (dest, callback) {
+    reshash: function (opt) {
+        const { dest, callback } = opt
         return gulp.src(path.resolve(dest, 'resource', 'default.res.json'))
             .pipe(staticHash({
                 asset: path.resolve(dest, 'resource', 'assets'),
@@ -17,7 +19,8 @@ module.exports = {
                 callback && callback()
             })
     },
-    version: function (dest, callback) {
+    version: function (opt) {
+        const { dest, callback } = opt
         const version = Date.now()
         return gulp.src([path.resolve(dest, '**', '*.thm.json'), path.resolve(dest, 'main.min.js')])
             .pipe(replace('.exml"', '.exml?v=' + version + '"'))
@@ -28,7 +31,8 @@ module.exports = {
                 callback && callback()
             })
     },
-    tinypng: function (key, src, dest, callback) {
+    tinypng: function (opt) {
+        const { key, src, dest, callback } = opt
         return gulp.src(path.resolve(src, 'resource', 'assets', '**', '*') + '.{png,jpg,jpeg}')
             .pipe(tinypng({
                 key: key,
@@ -40,7 +44,8 @@ module.exports = {
                 callback && callback()
             })
     },
-    copy: function (src, dest, callback) {
+    copy: function (opt) {
+        const { src, dest, callback } = opt
         return gulp.src(path.resolve(src, '**', '*'))
             .pipe(gulp.dest(path.resolve(dest)))
             .on('end', function () {
